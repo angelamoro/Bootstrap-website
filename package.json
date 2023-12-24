@@ -1,0 +1,11 @@
+{
+  "name": "03.-bootstrap",
+  "version": "1.0.0",
+  "description": "Bootstrap website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Angela Alonso Moro",
+  "license": "ISC"
+}
