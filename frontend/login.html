@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  </head>
+
+<body style="background-color: black;">
+    <div class="card mx-auto my-5" style="width: 50rem; background-color: white; margin: 2rem; padding: 2rem;">
+        <div class="card-body">
+            <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+            <form method="post" action="../php/login.php">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="username@email.com"
+                        required autofocus>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password"  required autofocus>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+
+            <a href="./register.html">I don´t have an account</a>
+        </div>
+    </div>
+
+</body>
+
+</html>

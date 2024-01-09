@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+
+<body style="background-color: black;">
+  <div class="card mx-auto my-5" style="width: 80rem; background-color: white; margin: 2rem; padding: 2rem;">
+    <div class="card-body">
+      <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+      <form method="post" action="../php/user_register.php">
+        <div class="row g-3">
+
+          <div class="col-md-6">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="John" required autofocus>
+          </div>
+          <div class="col-md-6">
+            <label for="surname" class="form-label">Surname</label>
+            <input type="text" class="form-control" id="surname" name="surname" placeholder="Appleseed" required autofocus>
+          </div>
+          <div class="col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="john@appleseed.es" required
+              autofocus>
+          </div>
+          <div class="col-md-6">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+          </div>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="checkBox">
+          <label class="form-check-label" for="checkBox">
+            Default checkbox
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+      </form>
+      <a href="./login.html">I already have an account</a>
+    </div>
+  </div>
+</body>
+
+</html>
