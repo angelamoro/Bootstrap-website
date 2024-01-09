@@ -18,7 +18,7 @@ function obtainExpenses($id_user, $pdo)
             JOIN 
                 tracker.categories c ON t.id_category = c.id_category
             WHERE
-                id_user = :id_user AND t.type = 'expense'";
+                t.id_user = :id_user AND t.type = 'Expense'";
 
         $stmt_select_expenses = $pdo->prepare($sql_select_expenses);
         $stmt_select_expenses->bindParam(':id_user', $id_user);
@@ -48,7 +48,7 @@ function groupExpenses($id_user, $pdo)
         JOIN 
             tracker.categories c ON t.id_category = c.id_category
         WHERE
-            id_user = :id_user AND t.type = 'expense'
+            t.id_user = :id_user AND t.type = 'Expense'
         GROUP BY
             category_name";
 

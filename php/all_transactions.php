@@ -20,6 +20,8 @@ function obtainTransactions($id_user, $pdo)
                 tracker.categories c ON t.id_category = c.id_category
             WHERE 
                 t.id_user = :id_user
+            ORDER BY
+                date
         ";
 
         $stmt_select_transactions = $pdo->prepare($sql_select_transactions);
@@ -83,7 +85,7 @@ function groupTransactions($id_user, $pdo)
             FROM 
                 transactions
             WHERE
-                id_user = :id_user AND type = 'expense'
+                id_user = :id_user AND type = 'Expense'
             GROUP BY
                 transaction_month";
 
@@ -144,7 +146,5 @@ for ($month = 1; $month <= 12; $month++) {
 $chartDataJSONtransactions = json_encode($chartData);
 
 
-
-?>
 
 ?>

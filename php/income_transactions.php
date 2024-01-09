@@ -18,7 +18,7 @@ function obtainIncomes($id_user, $pdo)
             JOIN 
                 tracker.categories c ON t.id_category = c.id_category
             WHERE
-                id_user = :id_user AND t.type = 'income'";
+                t.id_user = :id_user AND t.type = 'Income'";
         $stmt_select_incomes = $pdo->prepare($sql_select_incomes);
         $stmt_select_incomes->bindParam(':id_user', $id_user);
 
@@ -47,7 +47,7 @@ function groupIncomes($id_user, $pdo)
         JOIN 
             tracker.categories c ON t.id_category = c.id_category
         WHERE
-            id_user = :id_user AND t.type = 'income'
+            t.id_user = :id_user AND t.type = 'Income'
         GROUP BY
             category_name";
 

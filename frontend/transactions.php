@@ -1,5 +1,7 @@
-<?php session_start();
-require_once('../php/all_transactions.php'); ?>
+<?php 
+session_start();
+require_once('../php/all_transactions.php'); 
+?>
 
 <!DOCTYPE html>
 <html lang="en">

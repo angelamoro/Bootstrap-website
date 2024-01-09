@@ -54,22 +54,26 @@ require_once('../php/categories_transactions.php'); ?>
           <table class="table table-bordered border-primary table-hover table-sm align-middle">
             <thead>
               <tr>
-                <th>Category</th>
+                <th>Type</th>
+                <th>Name</th>
               </tr>
             </thead>
             <tbody>
               <?php
-              $incomes = obtainCategoryIncomes($id_user, $pdo);
-              foreach ($incomes as $income) { ?>
+              $categories = obtainCategories($id_user, $pdo);
+              foreach ($categories as $category) { ?>
                 <tr>
-                  <td>
-                    <?= $income['category'] ?>
+                <td>
+                    <?= $category['type'] ?>
                   </td>
+                  <td>
+                    <?= $category['name'] ?>
+                  </td>
+                  
                 </tr>
               <?php } ?>
             </tbody>
           </table>
-
         </div>
 
 
