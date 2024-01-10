@@ -27,8 +27,9 @@ function obtainIncomes($id_user, $pdo)
         if ($stmt_select_incomes->execute()) {
             $incomes = $stmt_select_incomes->fetchAll(PDO::FETCH_ASSOC);
         }
-
         return $incomes;
+
+        
     } catch (PDOException $e) {
         echo 'Error in the database when searching for the incomes: ' . $e->getMessage();
         return [];

@@ -27,7 +27,7 @@ require_once('../php/expense_transactions.php'); ?>
           <!-- Enlaces a las distintas páginas -->
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active" href="./index.php"><i class="fas fa-chart-bar"></i> Dashboard</a>
+              <a class="nav-link active" href="./dashboard.php"><i class="fas fa-chart-bar"></i> Dashboard</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./transactions.php"><i class="fas fa-exchange-alt"></i> Transactions</a>

@@ -1,39 +1,87 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<body style="background-color: black;">
-    <div class="card mx-auto my-5" style="width: 50rem; background-color: white; margin: 2rem; padding: 2rem;">
-        <div class="card-body">
-            <h1 class="h3 mb-3 font-weight-normal">Login</h1>
-            <form method="post" action="../php/login.php">
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="username@email.com"
-                        required autofocus>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="password"  required autofocus>
-                </div>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                </div>
-                <button type="submit" class="btn btn-primary">Login</button>
-            </form>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-            <a href="./register.html">I don´t have an account</a>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="Form-box">
+
+                    <!--Login-->
+                    <form class="Login-form" method="post" action="../php/login.php">
+                        <h1>Login</h1>
+                        <div class="input-box">
+                            <input type="email" name="email" required autofocus>
+                            <label>Email</label>
+                            <ion-icon name="mail-outline"></ion-icon>
+                        </div>
+                        <div class="input-box">
+                            <input type="password" name="password" required autofocus>
+                            <label>Password</label>
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                        </div>
+                        <div class="checkbox">
+                            <span>
+                                <input type="checkbox" id="login-checkbox" name="remember_me">
+                                <label for="login-checkbox">Remember Me</label>
+                            </span>
+                        </div>
+                        <button type="submit" class="submit-btn">Submit</button>
+                        <h5 class="Register-btn">Don't have an account? Register</h5>
+                    </form>
+
+
+                    <!--Register-->
+                    <form class="Register-form" method="post" action="../php/user_register.php">
+                        <h1>Register</h1>
+                        <div class="input-box">
+                            <input type="text" name="name" required autofocus>
+                            <label>Name</label>
+                            <ion-icon name="person-outline"></ion-icon>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" name="surname" required autofocus>
+                            <label>Surname</label>
+                            <ion-icon name="person-outline"></ion-icon>
+                        </div>
+                        <div class="input-box">
+                            <input type="email" name="email" required autofocus>
+                            <label>Email</label>
+                            <ion-icon name="mail-outline"></ion-icon>
+                        </div>
+                        <div class="input-box">
+                            <input type="password" name="password" required autofocus>
+                            <label>Password</label>
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="register-checkbox" required>
+                            <label for="register-checkbox">I agree to the terms & conditions</label>
+                        </div>
+                        <button type="submit" class="submit-btn">Submit</button>
+                        <h5 class="Login-btn">Register before? Login</h5>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="../js/login.js"></script>
 </body>
 
 </html>

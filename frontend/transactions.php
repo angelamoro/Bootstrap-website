@@ -1,6 +1,6 @@
-<?php 
+<?php
 session_start();
-require_once('../php/all_transactions.php'); 
+require_once('../php/all_transactions.php');
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +29,7 @@ require_once('../php/all_transactions.php');
           <!-- Enlaces a las distintas páginas -->
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active" href="./index.php"><i class="fas fa-chart-bar"></i> Dashboard</a>
+              <a class="nav-link active" href="./dashboard.php"><i class="fas fa-chart-bar"></i> Dashboard</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./transactions.php"><i class="fas fa-exchange-alt"></i> Transactions</a>
@@ -50,47 +50,45 @@ require_once('../php/all_transactions.php');
         </div>
       </div>
       <div class="col-lg-10">
-        <!-- Aquí va el contenido principal de tu aplicación -->
-        <h1>Transactions</h1>
-        <div class="table-responsive">
-          <table class="table table-bordered border-primary table-hover table-sm align-middle">
-            <thead>
-              <tr>
-                <th>Type</th>
-                <th>Category</th>
-                <th>Amount</th>
-                <th>Date</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php
-              $transactions = obtainTransactions($id_user, $pdo);
-              foreach ($transactions as $transaction) { ?>
+        <div>
+          <h1 class="text-center" style="color: white;">Transactions</h1>
+          <div class="table-responsive">
+            <table class="table table-bordered border-primary table-hover table-sm">
+              <thead class="thead-dark">
                 <tr>
-                <td>
-                    <?= $transaction['type'] ?>
-                  </td>
-                  <td>
-                    <?= $transaction['category_name'] ?>
-                  </td>
-                  <td>
-                    <?= $transaction['amount'] ?>
-                  </td>
-                  <td>
-                    <?= $transaction['date'] ?>
-                  </td>
-                  <td>
-                    <?= $transaction['description'] ?>
-                  </td>
+                  <th>Type</th>
+                  <th>Category</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                  <th>Description</th>
                 </tr>
-              <?php } ?>
-            </tbody>
-          </table>
-
+              </thead>
+              <tbody>
+                <?php
+                $transactions = obtainTransactions($id_user, $pdo);
+                foreach ($transactions as $transaction) { ?>
+                  <tr>
+                    <td>
+                      <?= $transaction['type'] ?>
+                    </td>
+                    <td>
+                      <?= $transaction['category_name'] ?>
+                    </td>
+                    <td>
+                      <?= $transaction['amount'] ?>
+                    </td>
+                    <td>
+                      <?= $transaction['date'] ?>
+                    </td>
+                    <td>
+                      <?= $transaction['description'] ?>
+                    </td>
+                  </tr>
+                <?php } ?>
+              </tbody>
+            </table>
+          </div>
         </div>
-
-
       </div>
     </div>
   </div>
