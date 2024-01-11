@@ -29,7 +29,7 @@ function obtainIncomes($id_user, $pdo)
         }
         return $incomes;
 
-        
+
     } catch (PDOException $e) {
         echo 'Error in the database when searching for the incomes: ' . $e->getMessage();
         return [];
@@ -81,6 +81,8 @@ foreach ($incomes as $income) {
 
 // Convierte los datos PHP en un formato JavaScript utilizando json_encode
 $chartDataJSONincomes = json_encode($chartData);
+
+
 
 
 ?>

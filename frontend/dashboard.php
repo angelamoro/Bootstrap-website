@@ -33,7 +33,6 @@ require_once('../php/income_transactions.php'); ?>
       var data = google.visualization.arrayToDataTable(chartData);
 
       var options = {
-        title: 'Transactions by month',
         curveType: 'function',
         legend: {
           position: 'bottom'
@@ -73,7 +72,7 @@ require_once('../php/income_transactions.php'); ?>
     }
   </script>
 
-  <!-- Incomes -->
+  <!-- Incomes by category -->
   <script type="text/javascript">
     google.charts.load('current', {
       'packages': ['corechart']
@@ -97,71 +96,74 @@ require_once('../php/income_transactions.php'); ?>
 
 </head>
 
-<body style="background-color: black;">
-  <div class="container-fluid vh-100" style="background-color: black;">
-    <div class="row vh-100">
-      <div class="col-lg-2 bg-body-tertiary text-center d-none d-lg-block">
-        <div class="d-flex flex-column justify-content-between h-100" style="padding: 20px; ">
-          <!-- Nombre de usuario -->
-          <h4>Hello
-            <?php echo $_SESSION['user']; ?>
-          </h4>
-          <!-- Enlaces a las distintas páginas -->
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link active bs-primary-bg-subtle" href="./dashboard.php"><i class="fas fa-chart-bar"></i>
-                Dashboard</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./transactions.php"><i class="fas fa-exchange-alt"></i> Transactions</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./incomes.php"><i class="fas fa-coins"></i> Incomes</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./expenses.php"><i class="fas fa-credit-card"></i> Expenses</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./categories.php"><i class="fas fa-tags"></i> Categories</a>
-            </li>
-          </ul>
-          <div>
-            <a class="nav-link" href="../php/logout.php"><i class="fas fa-sign-out-alt"></i>Sign out</a>
-          </div>
-        </div>
+<body style="background-color:black;">
+  <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary justify-content-between mb-3 ">
+    <div class="container-fluid d-flex">
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <h4>Hello
+        <?php echo $_SESSION['user']; ?>
+      </h4>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+
+        <ul class="navbar-nav text-center">
+          <li class="nav-item">
+            <a class="nav-link" href="./dashboard.php"><i class="fas fa-chart-bar"></i> Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./transactions.php"><i class="fas fa-exchange-alt"></i> Transactions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./incomes.php"><i class="fas fa-coins"></i> Incomes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./expenses.php"><i class="fas fa-credit-card"></i> Expenses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./categories.php"><i class="fas fa-tags"></i> Categories</a>
+          </li>
+        </ul>
       </div>
-      <div class="col-lg-10">
-        <!-- Aquí va el contenido principal de tu aplicación -->
+      <a class="nav-link" href="../php/logout.php"><i class="fas fa-sign-out-alt"></i> Sign out</a>
+    </div>
+  </nav>
+  <center>
+
+      <div class="card" style="width: 80%;">
         <div class="text-center">
-          <h3 style="color: white;" class="text-center">Transactions by month</h3>
+          <h3 class="text-center" style="margin: 10px;"><i class="fas fa-exchange-alt"></i>Transactions by month</h3>
         </div>
-        <div id="transactionsCurve_chart" style="max-width: 100%; height: auto;"></div>
+
+        <div id="transactionsCurve_chart" class="col-md-12" style="height: 80%;"></div>
+
         <div class="text-center">
           <a href="./transactions.php" class="btn btn-primary mt-4">View transactions</a>
         </div>
-        <div class="row">
-          <div class="col-lg-6 mt-4">
-            <h3 style="color: white;" class="text-center">Expenses by category</h3>
-            <div id="expensesPiechart" style="max-width: 100%; height: auto;"></div>
-            <div class="text-center">
-              <a href="./expenses.php" class="btn btn-primary mt-4">View expenses</a>
-            </div>
-          </div>
-          <div class="col-lg-6 mt-4">
-            <h3 style="color: white;" class="text-center">Incomes by category</h3>
-            <div id="incomesPiechart" style="max-width: 100%; height: auto;"></div>
-            <div id="totalAmount"></div>
-            <div class="text-center">
-              <a href="./incomes.php" class="btn btn-primary mt-4">View incomes</a>
-            </div>
-
-          </div>
-        </div>
 
       </div>
-    </div>
-  </div>
 
+      <br>
+      <div class="row" style="justify-content: space-evenly">
+        <div class="card" style="width: 30%;">
+          <h3 class="text-center"><i class="fas fa-credit-card"></i>Expenses by category</h3>
+          <div id="expensesPiechart" style="height: 80%;"></div>
+          <div class="text-center">
+            <a href="./expenses.php" class="btn btn-primary mt-4">View expenses</a>
+          </div>
+        </div>
+        <div class="card col-lg-6" style="width: 30%;">
+          <h3 class="text-center"><i class="fas fa-coins"></i>Incomes by category</h3>
+          <div class="col-md-12" id="incomesPiechart" style="height: 80%;"></div>
+          <div class="text-center">
+            <a href="./incomes.php" class="btn btn-primary mt-4">View incomes</a>
+          </div>
+        </div>
+      </div>
+    
+  </center>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
