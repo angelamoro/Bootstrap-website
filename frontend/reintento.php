@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('../php/all_transactions.php');
+require_once('../php/expense_transactions.php');
 ?>
 
 <!DOCTYPE html>
@@ -9,16 +9,16 @@ require_once('../php/all_transactions.php');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Transactions</title>
+    <title>Reintento</title>
+    <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 
-<body class="min-vh-100" style="background: url('../style/Images/city.png')">
-    <nav class="navbar navbar-expand-lg navbar-light justify-content-between fixed-top"
-        style="background-color: blue;">
-        <div class="container-fluid d-flex justify-content-between align-items-center" style="width: 90%;">
+<body class="min-vh-100">
+    <nav class="navbar navbar-expand-lg navbar-light justify-content-between fixed-top">
+        <div class="container-fluid d-flex justify-content-between align-items-center navigator">
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,15 +58,13 @@ require_once('../php/all_transactions.php');
 
 
 
-    <div class="content-wrapper pt-5 justify-content-between min-vh-100"
-        style="background-color: whitesmoke; display: flex; flex-direction: column; align-items: center;  height: 100%">
-        <h1 class="text-center mt-4 mb-4"><i class="fas fa-exchange-alt"></i> Transactions</h1>
-        <div class="table-container" style="width: 75%; flex-grow: 1;">
+    <div class="content-wrapper pt-5 justify-content-between min-vh-100 container">
+        <h1 class="text-center mt-4 mb-4 tittle"><i class="fas fa-coins"></i> Incomes</h1>
+        <div class="table-container conTable">
             <div class="table-responsive mb-5 pb-5">
                 <table class="table table-striped">
                     <thead class="thead-dark">
                         <tr>
-                            <th>Type</th>
                             <th>Category</th>
                             <th>Amount</th>
                             <th>Date</th>
@@ -75,7 +73,7 @@ require_once('../php/all_transactions.php');
                     </thead>
                     <tbody class="table-group-divider">
                         <?php
-                        $transactions = obtainTransactions($id_user, $pdo);
+                        $transactions = obtainExpenses($id_user, $pdo);
                         $rowsPerPage = 15;
                         $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                         $startIndex = ($currentPage - 1) * $rowsPerPage;
@@ -85,9 +83,6 @@ require_once('../php/all_transactions.php');
 
                         foreach ($transactionsForPage as $transaction) { ?>
                             <tr>
-                                <td>
-                                    <?= $transaction['type'] ?>
-                                </td>
                                 <td>
                                     <?= $transaction['category_name'] ?>
                                 </td>
