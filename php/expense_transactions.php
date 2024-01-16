@@ -9,16 +9,19 @@ function obtainExpenses($id_user, $pdo)
     try {
         $sql_select_expenses = "
         SELECT 
-                c.name as category_name, 
-                t.amount, 
-                t.date, 
-                t.description 
-            FROM 
-                tracker.transactions t 
-            JOIN 
-                tracker.categories c ON t.id_category = c.id_category
-            WHERE
-                t.id_user = :id_user AND t.type = 'Expense'";
+            c.name as category_name, 
+            t.amount, 
+            t.date, 
+            t.description 
+        FROM 
+            tracker.transactions t 
+        JOIN 
+            tracker.categories c ON t.id_category = c.id_category
+        WHERE
+            t.id_user = :id_user AND t.type = 'Expense'
+        ORDER BY
+            date DESC
+        ";
 
         $stmt_select_expenses = $pdo->prepare($sql_select_expenses);
         $stmt_select_expenses->bindParam(':id_user', $id_user);

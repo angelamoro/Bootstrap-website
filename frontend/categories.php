@@ -11,21 +11,21 @@ require_once('../php/categories_transactions.php');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Categories</title>
     <link rel="stylesheet" href="../style/style.css">
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 
 <body class="min-vh-100">
-    <nav class="navbar navbar-expand-lg navbar-light justify-content-between fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light justify-content-between fixed-top topMenu">
         <div class="container-fluid d-flex justify-content-between align-items-center navigator">
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="d-flex align-items-center ">
+
                 <h4 class="mb-0 mr-3">Hello
                     <?php echo $_SESSION['user']; ?>
                 </h4>
@@ -59,6 +59,7 @@ require_once('../php/categories_transactions.php');
 
 
     <div class="content-wrapper pt-5 justify-content-between min-vh-100 container">
+        <br>
         <h1 class="text-center mt-4 mb-4 tittle"><i class="fas fa-tags"></i> Categories</h1>
         <div class="table-container conTable">
             <div class="table-responsive mb-5 pb-5">
@@ -94,7 +95,7 @@ require_once('../php/categories_transactions.php');
             </div>
 
             <!-- Pagination -->
-            <nav aria-label="Page navigation mt-20" class="fixed-bottom pb-5 mb-1">
+            <nav aria-label="Page navigation mt-20" class="fixed-bottom pb-5 mb-1 pages">
                 <ul class="pagination justify-content-center">
                     <?php
                     //Total number of pages

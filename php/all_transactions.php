@@ -21,7 +21,7 @@ function obtainTransactions($id_user, $pdo)
             WHERE 
                 t.id_user = :id_user
             ORDER BY
-                date
+                date DESC
         ";
 
         $stmt_select_transactions = $pdo->prepare($sql_select_transactions);

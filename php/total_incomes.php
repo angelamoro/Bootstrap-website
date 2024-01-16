@@ -12,17 +12,17 @@ function totalIncomes($id_user, $pdo)
         $stmt->bindParam(':id_user', $id_user);
 
         $stmt->execute();
-        $total_amount = $stmt->fetch(PDO::FETCH_ASSOC)['total_amount'];
 
-        return ['total_amount' => (int) $total_amount];
+        $data = array();
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $data[]= $row;
+        }
+
+        echo json_encode($data);
+
     } catch (PDOException $e) {
         return ['error' => 'Error occurred: ' . $e->getMessage()];
     }
 }
-
-// Llamar a la función y obtener los datos
-$data = totalIncomes($id_user, $pdo);
-
-
 
 ?>

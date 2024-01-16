@@ -7,7 +7,7 @@ body{
   background-image: url(./images/background.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 0px -50px;
+  background-attachment: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -133,4 +133,11 @@ header nav a:hover::before{
 }
 .change-form .Register-form{
   transform: translateX(0%);
+}
+
+@media (max-width: 768px){
+  .Form-box{
+    width: 80%;
+    height: 580px;
+  }
 }

@@ -9,7 +9,8 @@ function obtainIncomes($id_user, $pdo)
     try {
         $sql_select_incomes = "
         SELECT 
-                c.name as category_name, 
+            t.id_transaction,        
+            c.name as category_name, 
                 t.amount, 
                 t.date, 
                 t.description 
@@ -18,7 +19,10 @@ function obtainIncomes($id_user, $pdo)
             JOIN 
                 tracker.categories c ON t.id_category = c.id_category
             WHERE
-                t.id_user = :id_user AND t.type = 'Income'";
+                t.id_user = :id_user AND t.type = 'Income'
+            ORDER BY
+                date DESC
+            ";
         $stmt_select_incomes = $pdo->prepare($sql_select_incomes);
         $stmt_select_incomes->bindParam(':id_user', $id_user);
 
