@@ -4,7 +4,7 @@ $id_user = $_SESSION['id_user'];
 
 function getInCategories($id_user, $pdo){
 try {
-    $sql_select_categories = "SELECT id_category, name FROM tracker.categories WHERE id_user = :id_user AND t.type = 'Income'";
+    $sql_select_categories = "SELECT id_category, name FROM tracker.categories WHERE type = 'Income' AND (global = 1 OR id_user = :id_user)";
     $stmt_select_categories = $pdo->prepare($sql_select_categories);
 
     $incomeCategories = [];

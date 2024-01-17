@@ -18,7 +18,7 @@ try {
         date = :date,
         description = :description
     where
-        id_transaction = :transaction
+        id_transaction = :transaction AND type='Income'
     ");
     $stmt->bindParam(':category', $newCategory);
     $stmt->bindParam(':amount', $newAmount);

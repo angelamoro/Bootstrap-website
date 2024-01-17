@@ -1,5 +1,3 @@
-// Variables globales para almacenar los valores actualizados
-var updatedDate, updatedCategory, updatedDescription, updatedAmount;
 
 async function editTransaction(id) {
     // Obtener la fila editable

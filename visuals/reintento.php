@@ -17,7 +17,7 @@ require_once('../functionality/income_transactions.php');
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
-    <script src="../js/crud_incomes.js"></script>
+    <script src="../js/deleteIncome.js"></script>
 
 </head>
 
@@ -86,7 +86,6 @@ require_once('../functionality/income_transactions.php');
                         $transactionsForPage = array_slice($transactions, $startIndex, $rowsPerPage);
 
                         foreach ($transactionsForPage as $transaction) { ?>
-                            <!-- $id_trans=<?= $transaction['id_transaction'] ?>; -->
                             <tr data-id="<?= $transaction['id_transaction'] ?>" class="editable-row">
                                 <td class="date">
                                     <?= $transaction['date'] ?>
@@ -101,9 +100,12 @@ require_once('../functionality/income_transactions.php');
                                     <?= $transaction['amount'] ?>
                                 </td>
                                 <td>
-                                <button class="btn-edit" data-transaction-id="<?= $transaction['id_transaction'] ?>" onclick="editTransaction(<?= $transaction['id_transaction'] ?>)">Edit</button>
+                                    <button class="btn-edit" data-transaction-id="<?= $transaction['id_transaction'] ?>"
+                                        onclick="editTransaction(<?= $transaction['id_transaction'] ?>)">Edit</button>
 
-                                    <button class="btn-delete">Delete</button>
+                                    <button class="btn-delete"
+                                        data-transaction-id="<?= $transaction['id_transaction'] ?>">Delete</button>
+
                                 </td>
                             </tr>
                         <?php } ?>

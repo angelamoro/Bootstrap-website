@@ -95,8 +95,6 @@ require_once('../functionality/getExpenseCategories.php');
         }
     </script>
 
-    <script src="../js/totalIncomes.js"></script>
-
 </head>
 
 <body class="min-vh-100">
