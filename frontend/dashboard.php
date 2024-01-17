@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once('../php/connectiondb.php');
 require_once('../php/all_transactions.php');
 require_once('../php/expense_transactions.php');
 require_once('../php/income_transactions.php');
@@ -102,8 +103,7 @@ require_once('../php/getExpenseCategories.php');
     <nav class="navbar navbar-expand-lg navbar-light justify-content-between fixed-top topMenu">
         <div class="container-fluid d-flex justify-content-between align-items-center navigator">
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -151,8 +151,8 @@ require_once('../php/getExpenseCategories.php');
                     <?php
                     try {
                         $sql = "SELECT 
-                                (SELECT COALESCE(SUM(amount), 0) FROM transactions WHERE type = 'Income' AND id_user = :id_user) -
-                                (SELECT COALESCE(SUM(amount), 0) FROM transactions WHERE type = 'Expense' AND id_user = :id_user) AS net_total";
+                                (SELECT COALESCE(SUM(amount), 0) FROM tracker.transactions WHERE type = 'Income' AND id_user = :id_user) -
+                                (SELECT COALESCE(SUM(amount), 0) FROM tracker.transactions WHERE type = 'Expense' AND id_user = :id_user) AS net_total";
                         $stmt = $pdo->prepare($sql);
                         $stmt->bindParam(':id_user', $id_user);
 
@@ -160,7 +160,6 @@ require_once('../php/getExpenseCategories.php');
                         $balance = $stmt->fetchColumn();
 
                         echo $balance;
-
                     } catch (PDOException $e) {
                         echo 'Error occurred: ' . $e->getMessage();
                     }
@@ -189,13 +188,17 @@ require_once('../php/getExpenseCategories.php');
                                 $totalI = $stmt->fetchColumn();
 
                                 echo $totalI;
-
                             } catch (PDOException $e) {
                                 echo 'Error occurred: ' . $e->getMessage();
                             }
                             ?>
                             €
                         </h3>
+                        <!-- floating button -->
+
+                        <div class="btn-container">
+                            <button id="show-form" class="floating-btn">+</button>
+                        </div>
                     </div>
                 </div>
 
@@ -215,7 +218,6 @@ require_once('../php/getExpenseCategories.php');
                                 $totalE = $stmt->fetchColumn();
 
                                 echo $totalE;
-
                             } catch (PDOException $e) {
                                 echo 'Error occurred: ' . $e->getMessage();
                             }
@@ -225,7 +227,7 @@ require_once('../php/getExpenseCategories.php');
                         <!-- floating button -->
 
                         <div class="btn-container">
-                            <button id="show-form" class="floating-btn">+</button>
+                            <button id="show-form1" class="floating-btn">+</button>
                         </div>
 
                     </div>
@@ -239,62 +241,46 @@ require_once('../php/getExpenseCategories.php');
     </div>
 
     <!-- form to add transactions -->
-    <div class="popup">
+    <div class=" popup popupI">
         <div class="close-btn">&times;</div>
         <div class="form">
-            <h2>Register transaction</h2>
-            <form method="post" action="">
+            <h2>Register Income</h2>
+            <form method="post" action="../php/addIncome.php">
                 <div class="form-element">
                     <label>Date</label>
                     <input type="date" class="form-control" name="date" id="transactionDate">
                 </div>
                 <div class="form-element">
-                    <label>Type:</label>
-                    <select class="form-control" name="type" id="transactionType">
-                        <option value="Income">Income</option>
-                        <option value="Expense">Expense</option>
+                    <label>Category:</label>
+                    <select name="category" class="form-control">
+                        <?php
+                        $query = "SELECT id_category, name 
+                        FROM tracker.categories 
+                        WHERE type = 'Income' AND (global = 1 OR id_user = :id_user)";
+                        $stmt = $pdo->prepare($query);
+                        $stmt->bindParam(':id_user', $id_user);
+                        $stmt->execute();
+
+                        while ($row = $stmt->fetch()) {
+                            echo "<option value='" . $row['id_category'] . "'>" . $row['name'] . "</option>";
+                        }
+
+                        ?>
                     </select>
                 </div>
                 <div class="form-element">
-                    <label>Clasification:</label>
-
-                    <script>
-                        $(document).ready(function () {
-                            // Evento que se dispara cuando el valor de type cambia
-                            $('#transactionType').on('change', function () {
-                                // Obtener el valor seleccionado
-                                var selectedType = $(this).val();
-
-                                // Limpiar las opciones actuales del segundo selector
-                                $('#transactionCategory').empty();
-
-                                // Obtener y agregar las nuevas opciones según el tipo seleccionado
-                                if (selectedType === 'Income') {
-                                    getIncomeCategories();
-                                    $('#transactionCategory').append('<option value="Salary">Salary</option>');
-                                    $('#transactionCategory').append('<option value="Bonus">Bonus</option>');
-                                } else if (selectedType === 'Expense') {
-                                    getExpenseCategories();
-                                    $('#transactionCategory').append('<option value="Groceries">Groceries</option>');
-                                    $('#transactionCategory').append('<option value="Utilities">Utilities</option>');
-                                }
-                            });
-                        })
-                    </script>
-
-                </div>
-
-                <div class="form-element">
                     <label>Description:</label>
-                    <input type="text" class="form-control">
+                    <input type="text" name="description" class="form-control">
                 </div>
                 <div class="form-element">
                     <label>Amount</label>
-                    <input type="text" class="form-control">
+                    <input type="text" name="amount" class="form-control">
                 </div>
                 <div class="form-element">
                     <button type="submit" class="btn btn-primary">Add transaction</button>
                 </div>
+                <br>
+                <br>
             </form>
         </div>
     </div>
