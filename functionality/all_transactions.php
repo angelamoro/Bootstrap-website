@@ -113,20 +113,20 @@ function groupTransactions($id_user, $pdo)
     }
 }
 
-// Llama a tu función para obtener los datos de ingresos y gastos agrupados por mes
+
 $transactions = groupTransactions($id_user, $pdo);
 
-// Prepara los datos para usar en JavaScript
+
 $chartData = [];
 $chartData[] = ['Month', 'Incomes', 'Expenses'];
 
 $incomes = $transactions['incomes'];
 $expenses = $transactions['expenses'];
 
-// Creamos un array donde los índices representan los meses del año
+
 $dataByMonth = array_fill(1, 12, ['Incomes' => 0, 'Expenses' => 0]);
 
-// Sumamos los ingresos y gastos en el array correspondiente al mes
+
 foreach ($incomes as $income) {
     $month = $income['transaction_month'];
     $dataByMonth[$month]['Incomes'] = (int) $income['total_income'];
@@ -137,12 +137,12 @@ foreach ($expenses as $expense) {
     $dataByMonth[$month]['Expenses'] = (int) $expense['total_expense'];
 }
 
-// Llenamos los datos del gráfico
+
 for ($month = 1; $month <= 12; $month++) {
     $chartData[] = [$month, $dataByMonth[$month]['Incomes'], $dataByMonth[$month]['Expenses']];
 }
 
-// Convierte los datos PHP en un formato JavaScript utilizando json_encode
+
 $chartDataJSONtransactions = json_encode($chartData);
 
 

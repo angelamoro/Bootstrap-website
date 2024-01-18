@@ -72,10 +72,10 @@ function groupExpenses($id_user, $pdo)
 }
 
 
-// Llama a tu función para obtener los datos de gastos agrupados por categoría
+
 $expenses = groupExpenses($id_user, $pdo);
 
-// Prepara los datos para usar en JavaScript
+
 $chartData = [];
 $chartData[] = ['Category', 'Amount'];
 
@@ -83,7 +83,7 @@ foreach ($expenses as $expense) {
     $chartData[] = [$expense['category_name'], (int) $expense['total_amount']];
 }
 
-// Convierte los datos PHP en un formato JavaScript utilizando json_encode
+
 $chartDataJSON = json_encode($chartData);
 
 

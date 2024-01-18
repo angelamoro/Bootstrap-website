@@ -5,7 +5,7 @@ require_once('./connectiondb.php');
 function obtainUserId($name, $surname, $pdo)
 {
     try {
-        // Buscar el ID del empleado por name y surname
+        
         $sql_select_id = "SELECT id_user FROM tracker.users WHERE name = :name AND surname = :surname";
         $stmt_select_id = $pdo->prepare($sql_select_id);
         $stmt_select_id->bindParam(':name', $name);

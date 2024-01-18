@@ -72,10 +72,10 @@ function groupIncomes($id_user, $pdo)
     }
 }
 
-// Llama a tu función para obtener los datos de ingresos agrupados por mes
+
 $incomes = groupIncomes($id_user, $pdo);
 
-// Prepara los datos para usar en JavaScript
+
 $chartData = [];
 $chartData[] = ['Category', 'Amount'];
 
@@ -83,7 +83,7 @@ foreach ($incomes as $income) {
     $chartData[] = [$income['category_name'], (int) $income['total_amount']];
 }
 
-// Convierte los datos PHP en un formato JavaScript utilizando json_encode
+
 $chartDataJSONincomes = json_encode($chartData);
 
 
