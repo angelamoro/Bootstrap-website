@@ -64,7 +64,7 @@ require_once('../functionality/categories_transactions.php');
         <h1 class="text-center mt-4 mb-4 tittle"><i class="fas fa-tags"></i> Categories</h1> 
         <div class="table-container conTable">
             <div class="table-responsive mb-5 pb-5">
-                <table class="table table-striped">
+                <table class="table table-striped mx-auto " style="max-width: fit-content;">
                     <thead class="thead-dark">
                         <tr>
                             <th>Type</th>
