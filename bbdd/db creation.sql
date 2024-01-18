@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS categories (
 	id_category INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(45) NOT NULL,
     type ENUM("Expense", "Income") NOT NULL,
-    global BOOLEAN NOT NULL DEFAULT true,
+    global BOOLEAN NOT NULL DEFAULT false,
     id_user INT,
 	PRIMARY KEY (id_category),
     FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE ON UPDATE CASCADE
@@ -56,111 +56,204 @@ VALUES ('Unai', 'Benito', 'Unai@gmail.com', '$2y$10$wEOIcZ9GKOy4eFPysSH0HOyMr.bL
 
 -- INSERTS FOR EXPENSE CATEGORIES
 
-INSERT INTO categories (name, type)
-VALUES ('Food', 'expense');
+INSERT INTO categories (name, type, global)
+VALUES ('Food', 'expense', 1);
 
-INSERT INTO categories (name, type)
-VALUES ('Transportation', 'expense');
+INSERT INTO categories (name, type, global)
+VALUES ('Transportation', 'expense', 1);
 
-INSERT INTO categories (name, type)
-VALUES ('Housing', 'expense');
+INSERT INTO categories (name, type, global)
+VALUES ('Housing', 'expense', 1);
 
-INSERT INTO categories (name, type)
-VALUES ('Entertainment', 'expense');
+INSERT INTO categories (name, type, global)
+VALUES ('Entertainment', 'expense', 1);
 
-INSERT INTO categories (name, type)
-VALUES ('Shopping', 'expense');
-
-INSERT INTO categories (name, type)
-VALUES ('Subscriptions', 'expense');
+INSERT INTO categories (name, type, global)
+VALUES ('Savings', 'expense', 1);
 
 -- INSERTS FOR INCOME CATEGORIES
 
-INSERT INTO categories (name, type)
-VALUES ('Salary', 'income');
+INSERT INTO categories (name, type, global)
+VALUES ('Salary', 'income', 1);
 
-INSERT INTO categories (name, type)
-VALUES ('Bonus', 'income');
+INSERT INTO categories (name, type, global)
+VALUES ('Bonus', 'income', 1);
 
-INSERT INTO categories (name, type)
-VALUES ('Payments', 'income');
-
-INSERT INTO categories (name, type)
-VALUES ('Reimbursement', 'income');
-
-INSERT INTO categories (name, type)
-VALUES ('Side Hustle', 'income');
+INSERT INTO categories (name, type, global)
+VALUES ('Side Hustle', 'income', 1);
 
 -- INSERTS FOR EXPENSES
 
 INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('expense', 1, 100, '2023-01-01', 'Groceries', 2);
+VALUES ('Expense', 1, 150, '2023-01-01', 'Groceries', 2);
 
 INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('expense', 5, 50, '2023-01-02', 'Utilities', 2);
+VALUES ('Expense', 5, 450, '2023-02-02', 'Repair car', 2);
 
 INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('expense', 2, 20, '2023-01-03', 'Transportation', 2);
+VALUES ('Expense', 2, 80, '2023-03-03', 'Fuel', 2);
 
 INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('expense', 3, 30, '2023-01-04', 'Entertainment', 2);
+VALUES ('Expense', 3, 800, '2023-04-04', 'Insurance', 2);
 
 INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('expense', 4, 40, '2023-01-05', 'Shopping', 2);
+VALUES ('Expense', 4, 150, '2023-05-05', 'Shopping', 2);
 
 INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('expense', 1, 150, '2023-01-06', 'Dining out', 2);
+VALUES ('Expense', 1, 150, '2023-06-06', 'Dining out', 2);
 
 INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('expense', 5, 75, '2023-01-07', 'Clothing', 2);
+VALUES ('Expense', 5, 75, '2023-07-07', 'Clothing', 2);
 
 INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('expense', 2, 10, '2023-01-08', 'Personal Care', 2);
+VALUES ('Expense', 5, 140, '2023-08-08', 'Hair Care', 2);
 
 INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('expense', 3, 25, '2023-01-09', 'Subscriptions', 2);
+VALUES ('Expense', 4, 50, '2023-09-09', 'Subscriptions', 2);
 
 INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('expense', 4, 12, '2023-01-10', 'Fuel', 2);
+VALUES ('Expense', 3, 500, '2023-10-10', 'Painting', 2);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Expense', 2, 20, '2023-11-11', 'Bus', 2);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Expense', 4, 30, '2023-12-12', 'Cinema', 2);
+
+---
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Expense', 3, 2000, '2023-01-01', 'Furniture', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Expense', 1, 200, '2023-02-02', 'Mercadona', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Expense', 4, 5, '2023-03-03', 'Suscriptions', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Expense', 2, 1000, '2023-04-04', 'Plane', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Expense', 5, 1500, '2023-05-05', 'Tokio trip', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Expense', 5, 50, '2023-06-06', 'Clothes', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Expense', 1, 150, '2023-07-07', 'Organic food', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Expense', 3, 560, '2023-08-08', 'Handyman', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Expense', 2, 50, '2023-09-09', 'Bus', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Expense', 1, 500, '2023-10-10', 'Dining out', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Expense', 3, 140, '2023-11-11', 'Chair', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Expense', 3, 150, '2023-12-12', 'Cat food', 1);
 
 -- INSERTS FOR INCOME
 
 INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('income', 7, 2800, '2023-01-01', 'Salary', 2);
+VALUES ('Income', 6, 2400, '2023-01-01', '', 2);
 
 INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('income', 8, 150, '2023-01-02', 'Interest', 2);
+VALUES ('Income', 6, 2400, '2023-02-02', '', 2);
 
 INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('income', 8, 75, '2023-01-03', 'Productivity Bonus', 2);
+VALUES ('Income', 6, 2400,'2023-03-03', '', 2);
 
 INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('income', 9, 200, '2023-01-04', 'Debt', 2);
+VALUES ('Income', 7, 1000,'2023-03-03', 'Productivity', 2);
 
 INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('income', 11, 50, '2023-01-08', 'Freelance', 2);
-
--- Inserts para distintos meses del año 2023
-INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('income', 7, 2800, '2023-02-01', 'Salary', 2);
+VALUES ('Income', 6, 2400, '2023-04-04', '', 2);
 
 INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('income', 8, 150, '2023-03-02', 'Interest', 2);
+VALUES ('Income', 8, 4000, '2023-04-04', 'Web desing', 2);
 
 INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('income', 8, 75, '2023-04-03', 'Productivity Bonus', 2);
+VALUES ('Income', 6, 2400, '2023-05-05', '', 2);
 
 INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('income', 9, 200, '2023-05-04', 'Debt', 2);
+VALUES ('Income', 6, 2400, '2023-06-06', '', 2);
 
 INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('income', 11, 50, '2023-06-08', 'Freelance', 2);
+VALUES ('Income', 6, 2400, '2023-07-07', '', 2);
 
 INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('income', 8, 2000, '2023-12-08', 'Extra Payment', 2);
+VALUES ('Income', 7, 1000,'2023-07-07', 'Productivity', 2);
 
 INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('income', 8, 4000, '2023-08-08', 'Extra Payment', 2);
+VALUES ('Income', 6, 2400, '2023-08-08', '', 2);
 
 INSERT INTO transactions (type, id_category, amount, date, description, id_user)
-VALUES ('expense', 3, 4000, '2023-05-08', 'Health Care', 2);
+VALUES ('Income', 6, 2400, '2023-09-09', '', 2);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Income', 6, 2400, '2023-10-10', '', 2);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Income', 6, 2400, '2023-11-11', '', 2);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Income', 8, 4000, '2023-11-11', 'Web desing', 2);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Income', 6, 2400, '2023-12-12', '', 2);
+
+----
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Income', 6, 4000, '2023-01-01', '', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Income', 6, 4000, '2023-02-02', '', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Income', 6, 4000,'2023-03-03', '', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Income', 7, 2500,'2023-03-03', 'Productivity', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Income', 6, 4000, '2023-04-04', '', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Income', 8, 3000, '2023-04-04', 'Web desing', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Income', 6, 4000, '2023-05-05', '', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Income', 6, 4000, '2023-06-06', '', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Income', 6, 4000, '2023-07-07', '', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Income', 7, 2500,'2023-07-07', 'Productivity', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Income', 6, 4000, '2023-08-08', '', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Income', 6, 4000, '2023-09-09', '', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Income', 6, 4000, '2023-10-10', '', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Income', 6, 4000, '2023-11-11', '', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Income', 8, 3000, '2023-11-11', 'Web desing', 1);
+
+INSERT INTO transactions (type, id_category, amount, date, description, id_user)
+VALUES ('Income', 6, 4000, '2023-12-12', '', 1);
